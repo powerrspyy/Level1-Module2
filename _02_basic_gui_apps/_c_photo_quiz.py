@@ -40,10 +40,10 @@ class application(tk.Tk):
         # TODO 6) Create a member variable for the image using the
         #  create_image function. You can use the image provided in this
         #  folder or another image from the internet
-    def photo_label(self, file):
+        self.img = create_image("carrots.jpg", 100, 100)
         # TODO 7) Create another label and attach to it the image object
         #  from the previous step
-        self.label_image = tk.Label(self, image=file)
+        self.label_image = tk.Label(self, image=self.img)
         # TODO 8) Place the label somewhere on your app
         self.label_image.place(x=125, y=200)
 # TODO 5) Create an if __name__ == '__main__': block
@@ -55,13 +55,19 @@ if __name__ == '__main__':
     app.geometry("500x500")
     # TODO 8) Declare and initialize a score variable
     score = 0
+
+    answer = simpledialog.askstring(None, prompt = "What color is the object show below: ")
+    if answer.lower() == "orange":
+        score+=1
+        messagebox.showinfo(title="Message", message = "Correct answer! Your score has increased by 1!")
+    else:
+        messagebox.showinfo(title="Message", message="Incorrect input the right answer is orange.")
+    messagebox.showinfo(title="final score", message= f"Your final score is {score}")
+    app.mainloop()
     # TODO 9) Create an image object variable using the create_image function
     #  above and store it in a variable
-    img = create_image("carrots.jpg", 100, 100)
     # TODO 10) Set the image onto the class's label using the configure method,
     #  for example:
-    #  app.photo_label.configure(image=image_object)
-    app.photo_label.configure(image = img)
     # TODO 11) Use a pop-up (simpledialog) to ask the user a question
     #  relating to the image and tell them if they get the right answer.
 
